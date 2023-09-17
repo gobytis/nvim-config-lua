@@ -84,6 +84,8 @@ vim.keymap.set("n", "<S-F10>", ":clo<CR>")
 
 -- 現在開いているファイルのディレクトリに移動します。
 vim.keymap.set("n", "<F7>", ":cd %:h<CR>")
+-- 現在開いているファイルのディレクトリを Windows エクスプローラーで開きます。
+vim.keymap.set("n", "<S-F7>", ":silent ! start %:h<CR>")
 
 -- 検索結果のハイライトを表示します。
 vim.keymap.set("n", "<F3>", ":set hlsearch<CR>")
