@@ -1,3 +1,6 @@
+-- 画面分割しても一つの status line で表示します。
+-- https://wed.dev/pr-neovim-vscode
+vim.opt.laststatus = 3
 require('lualine').setup {
     options = {
         icons_enabled = true,
@@ -6,7 +9,7 @@ require('lualine').setup {
         section_separators = { left = '', right = ''},
         disabled_filetypes = {},
         always_divide_middle = true,
-        globalstatus = false,
+        globalstatus = true,
     },
     sections = {
         lualine_a = {'mode'},
