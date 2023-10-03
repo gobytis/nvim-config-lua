@@ -47,6 +47,17 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 -- augroup END
 -- ]]
 
+-- fortls の設定。必要なのかよくわかりません。
+-- https://fortls.fortran-lang.org/options.html
+require'lspconfig'.fortls.setup{
+    cmd = {
+        "fortls",
+        "--lowercase_intrinsics",
+        "--debug_log",
+    },
+    autostart = false
+}
+
 --------------------------------------------------------------------------------
 -- キー マップ設定
 --------------------------------------------------------------------------------
@@ -84,6 +95,8 @@ vim.keymap.set("n", "<S-F10>", ":clo<CR>")
 
 -- 現在開いているファイルのディレクトリに移動します。
 vim.keymap.set("n", "<F7>", ":cd %:h<CR>")
+-- 現在開いているファイルのディレクトリを Windows エクスプローラーで開きます。
+vim.keymap.set("n", "<S-F7>", ":silent ! start %:h<CR>")
 
 -- 検索結果のハイライトを表示します。
 vim.keymap.set("n", "<F3>", ":set hlsearch<CR>")
