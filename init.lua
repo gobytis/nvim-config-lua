@@ -156,7 +156,7 @@ vim.opt.pumheight = 10
 -- カラー スキームを設定します。
 vim.cmd[[colorscheme iceberg]]
 -- フォントを指定します。
-vim.opt.guifont = "Ricty Diminished:h11"
+vim.opt.guifont = "Ricty Diminished:h14"
 
 -- スペル チェックにおいてアジア圏の語はスペルチェックの対象外にします。
 vim.opt.spelllang = {"c", "j", "k"}
@@ -194,4 +194,7 @@ vim.opt.formatoptions:remove("r")
 vim.opt.formatoptions:remove("o")
 
 -- floating window を半透明にします。
+-- ターミナルで flowting window を使った時に
+-- 下の文字が floating window 内で強調された
+-- ように表示されてしまうため、現在は停止しています。
 -- vim.opt.winblend = 10
