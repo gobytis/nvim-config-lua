@@ -78,10 +78,10 @@ return require("packer").startup(function(use)
   use "lukas-reineke/indent-blankline.nvim"
   
   -- LSP の diagnostics の見た目を整えるプラグイン
-  use({
-  "ErichDonGubler/lsp_lines.nvim",
-  config = function()
-    require("lsp_lines").setup()
-  end,
-})
+  -- use({
+  -- "ErichDonGubler/lsp_lines.nvim",
+  -- config = function()
+  --   require("lsp_lines").setup()
+  -- end,
+  -- })
 end)
