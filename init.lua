@@ -206,8 +206,11 @@ vim.opt.formatoptions:append({m = true, M = true})
 vim.opt.formatoptions:remove("r")
 vim.opt.formatoptions:remove("o")
 
--- floating window を半透明にします。
--- ターミナルで flowting window を使った時に
--- 下の文字が floating window 内で強調された
--- ように表示されてしまうため、現在は停止しています。
--- vim.opt.winblend = 10
+-- ターミナルでも True Color を使えるようにします。
+vim.opt.termguicolors = true
+-- floating window の透過度を設定します。
+vim.opt.winblend = 20
+-- 補完に使われるポップアップ メニューの透過度を設定します。
+vim.opt.pumblend = 20
+-- ターミナルの透過を反映するための設定です。
+vim.cmd "hi normal guibg=none"
