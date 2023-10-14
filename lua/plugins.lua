@@ -30,14 +30,23 @@ return require("packer").startup(function(use)
   ------------------------------------------------------------------------------
 
   use {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-      }
+    "nvim-telescope/telescope-fzf-native.nvim",
+    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  }
 
   -- ファイラー プラグイン
   use {
-      "nvim-telescope/telescope-file-browser.nvim",
-      requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    "nvim-telescope/telescope-file-browser.nvim",
+    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+  }
+
+  ------------------------------------------------------------------------------
+  -- ファイラー プラグイン
+  ------------------------------------------------------------------------------
+
+  use {
+    "nvim-tree/nvim-tree.lua",
+    requires = { "nvim-tree/nvim-web-devicons" },
   }
 
   ------------------------------------------------------------------------------

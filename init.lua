@@ -14,6 +14,7 @@ require "mason_config"
 -- require "lsp_lines_config"
 require "telescope_config"
 require "ugaterm_config"
+require "nvim-tree_config"
 
 --------------------------------------------------------------------------------
 -- ファイル別設定
