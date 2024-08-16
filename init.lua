@@ -50,7 +50,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 -- fortls の設定。必要なのかよくわかりません。
 -- https://fortls.fortran-lang.org/options.html
-require'lspconfig'.fortls.setup{
+require'lspconfig'.fortls.setup {
     cmd = {
         "fortls",
         "--lowercase_intrinsics",
@@ -58,6 +58,41 @@ require'lspconfig'.fortls.setup{
     },
     autostart = false
 }
+
+-- pyright の設定
+require 'lspconfig'.pyright.setup {
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "workspace"
+      }
+    }
+  }
+}
+
+-- r_language_server の設定
+require 'lspconfig'.r_language_server.setup{
+  on_attach = function(client, bufnr)
+  -- キー バインディングの設定などがあればここに追加
+  end,
+  settings = {
+    r = {
+      lsp = {
+        debug = true, -- デバッグ モードを有効にする（オプション）
+        use_stdio = true, -- stdio モードを使用する
+      }
+    }
+  }
+}
+
+--------------------------------------------------------------------------------
+-- 独自コマンドの設定
+--------------------------------------------------------------------------------
+
+-- Ripgrep コマンドを定義します。
+require("ripgrep_config").setup()
 
 --------------------------------------------------------------------------------
 -- キー マップ設定
