@@ -148,24 +148,29 @@ vim.keymap.set("n", "<S-F4>", ":cd %:h<CR>:!start cmd /K %:r.exe&timeout -1&exit
 -- ファイル読み込み設定
 --------------------------------------------------------------------------------
 
--- -- UTF-8 で開けなかった場合は SJIS で開き直します。
--- -- ファイルを開くときにエンコーディングをチェックする関数です。
--- local function check_encoding()
---   -- 現在のバッファのエンコーディングを取得します。
---   local encoding = vim.bo.fileencoding
---   
---   -- UTF-8 でない場合、Shift_JIS で開き直します。
---   if encoding ~= "utf-8" then
---     vim.cmd("e ++enc=cp932")
---   end
--- end
--- 
--- -- BufReadPost イベントでエンコーディングをチェックします。
--- -- この設定によって、ファイルが読み込まれた時に check_encoding が呼ばれます。
--- vim.api.nvim_create_autocmd("BufReadPost", {
---   pattern = "*",
---   callback = check_encoding,
---   })
+-- UTF-8 で開けなかった場合は SJIS で開き直します。
+-- ファイルを開くときにエンコーディングをチェックする関数です。
+local function check_encoding()
+  -- 現在のバッファのエンコーディングを取得します。
+  local encoding = vim.bo.fileencoding
+
+  -- バッファにファイル名がない場合は何もしない
+  if vim.api.nvim_buf_get_name(0) == "" then
+    return
+  end
+  
+  -- UTF-8 でない場合、Shift_JIS で開き直します。
+  if encoding ~= "utf-8" then
+    vim.cmd("e ++enc=cp932")
+  end
+end
+
+-- BufReadPost イベントでエンコーディングをチェックします。
+-- この設定によって、ファイルが読み込まれた時に check_encoding が呼ばれます。
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*",
+  callback = check_encoding,
+  })
 
 --------------------------------------------------------------------------------
 -- 操作設定
